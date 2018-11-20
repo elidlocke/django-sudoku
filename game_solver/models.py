@@ -6,3 +6,6 @@ class Game(models.Model):
     input = models.CharField(max_length=81)
     status = models.IntegerField(default=0)
     output = models.CharField(max_length=81, null=True, blank=True)
+
+    def __str__(self):
+        return self.input
