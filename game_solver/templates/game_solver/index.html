@@ -1,7 +1,11 @@
 <h1>A Super Fabulous Sudoku Solver</h1>
 {% if latest_games %}
 	<div class="main-button">
-		<button>Solve a New Puzzle</button>
+		<button>
+			<a href="{% url 'game_solver:new' %}">
+				Solve a New Puzzle
+			</a>
+		</button>
 	</div>
     <div class="games-list">
 	<h2>Recently Solved Puzzles</h2>
@@ -15,7 +19,7 @@
 		<div>{{ game.input }}</div>
 		<div>{{ game.output }}</div>
 		<div>
-			<a href="{% url 'detail' game.id  %}">View Detail</a>
+			<a href="{% url 'game_solver:detail' game.id  %}">View Detail</a>
 		</div>
     </div>
     {% endfor %}
