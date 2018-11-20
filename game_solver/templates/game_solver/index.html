@@ -1,0 +1,25 @@
+<h1>A Super Fabulous Sudoku Solver</h1>
+{% if latest_games %}
+	<div class="main-button">
+		<button>Solve a New Puzzle</button>
+	</div>
+    <div class="games-list">
+	<h2>Recently Solved Puzzles</h2>
+	<div class="flex-title flex-container">
+		<div>Input Puzzle</div>
+		<div>Solution</div>
+		<div>Detail View</div>
+	</div>
+    {% for game in latest_games %}
+    <div class="flex-container">
+		<div>{{ game.input }}</div>
+		<div>{{ game.output }}</div>
+		<div>
+			<a href="{% url 'detail' game.id  %}">View Detail</a>
+		</div>
+    </div>
+    {% endfor %}
+    </div>
+{% else %}
+    <p>You don't have any games yet.</p>
+{% endif %}
