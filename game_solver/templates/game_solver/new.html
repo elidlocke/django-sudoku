@@ -1,0 +1,9 @@
+<form method="post">
+	{% csrf_token %}
+	<label>input for sudoku game:</label>
+	<input type="text" name="input" value="{{ game.input }}"></input>
+	<input type="submit" />
+</form>
+<div>
+	<a href="{% url 'game_solver:index' %}">Return to all games</a>
+</div>
