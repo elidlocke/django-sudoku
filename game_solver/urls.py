@@ -3,7 +3,7 @@ from . import views
 
 app_name = 'game_solver'
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.IndexView.as_view(), name='index'),
     path('new/', views.new, name='new'),
-    path('<int:game_id>/', views.detail, name='detail')
+    path('<int:pk>/', views.DetailView.as_view(), name='detail')
 ]

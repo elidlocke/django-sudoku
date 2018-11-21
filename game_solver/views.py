@@ -1,17 +1,25 @@
-from django.shortcuts import render, get_object_or_404, HttpResponse
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.views import generic
+from django.utils import timezone
 
 from .models import Game
 from .solver import SudokuGame
-#from .forms import NewSudokuForm
 
-def index(request):
-    latest_games = Game.objects.order_by('creation_date')
-    context = { 'latest_games': latest_games }
-    return render(request, 'game_solver/index.html', context)
+class IndexView(generic.ListView):
+    template_name = 'game_solver/index.html'
+    context_object_name = 'latest_games'
 
-def detail(request, game_id):
-    game = get_object_or_404(Game, pk=game_id)
-    return render(request, 'game_solver/detail.html', {'game': game})
+    def get_queryset(self):
+        latest_games = Game.objects.filter(
+            creation_date__lte=timezone.now()
+        ).order_by('-creation_date')
+        return latest_games
+
+class DetailView(generic.DetailView):
+    model = Game
+    template_name = 'game_solver/detail.html'
 
 def new(request):
     if request.method == 'POST':
