@@ -5,7 +5,6 @@ from datetime import datetime
 class Game(models.Model):
     creation_date = models.DateTimeField('date created', auto_now_add=True)
     input = models.CharField(max_length=81)
-    status = models.IntegerField(default=0)
     output = models.CharField(max_length=81, null=True, blank=True)
 
     def __str__(self):
