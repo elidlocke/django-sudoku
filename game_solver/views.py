@@ -27,4 +27,6 @@ def new(request):
         play = SudokuGame(input)
         output = play.solveSudoku()
         game = Game.objects.create(input=input, output=output)
+        #TODO: redirect to detail page
+        #return HttpResponseRedirect(reverse('detail', args=(game.id)))
     return render(request, 'game_solver/new.html')
