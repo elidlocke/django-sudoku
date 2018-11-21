@@ -1,7 +1,9 @@
+**Start the Server**
+python manage.py runserver
 
+**Run the Tests**
+python manage.py test [game_solver]
 
+**Playing around in the shell**
+python manage.py shell
 
-NOT using Postgres
-**To access the PostgresDB Directly**
-`psql sudoku` will start in the sudoku database
-OR `\connect sudoku` will switch to the sudoku database
