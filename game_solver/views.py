@@ -26,7 +26,7 @@ def new(request):
     if request.method == 'POST':
         form = NewSudokuForm(request.POST)
         if form.is_valid():
-            input = form.cleaned_data.get('input')
+            input = form.cleaned_data['input']
             play = SudokuGame(input)
             output = play.solveSudoku()
             game = Game.objects.create(input=input, output=output)
