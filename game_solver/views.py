@@ -6,6 +6,7 @@ from django.utils import timezone
 
 from .models import Game
 from .solver import SudokuGame
+from .forms import NewSudokuForm
 
 class IndexView(generic.ListView):
     template_name = 'game_solver/index.html'
@@ -23,10 +24,14 @@ class DetailView(generic.DetailView):
 
 def new(request):
     if request.method == 'POST':
-        input = request.POST['input']
-        play = SudokuGame(input)
-        output = play.solveSudoku()
-        game = Game.objects.create(input=input, output=output)
-        #TODO: redirect to detail page
-        #return HttpResponseRedirect(reverse('detail', args=(game.id)))
-    return render(request, 'game_solver/new.html')
+        form = NewSudokuForm(request.POST)
+        if form.is_valid():
+            input = form.cleaned_data.get('input')
+            play = SudokuGame(input)
+            output = play.solveSudoku()
+            game = Game.objects.create(input=input, output=output)
+            #redirect should not be hardcoded to 1
+            return HttpResponseRedirect('/game_solver/31/')
+    else:
+        form = NewSudokuForm()
+    return render(request, 'game_solver/new.html', {'form': form})
