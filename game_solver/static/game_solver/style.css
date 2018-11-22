@@ -1,22 +1,50 @@
 body {
 	color: grey;
 	font-family: 'Raleway', sans-serif;
+	text-align: center;
+}
+
+.main-cta {
+    padding: 15px 32px;
+	margin:50px;
 }
 
 button, .button {
+    padding: 5px 10px;
     background-color: #A20A20;
     border: none;
 	border-radius: 10px;
     color: white;
-    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
 }
 
+h1 {
+	padding-top: 25px;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+textarea,
+select,
+input,
+button {
+	outline: none;
+}
+
+.subtitle {
+	padding: 10px;
+	margin: 0;
+}
+
 .italic {
 	font-style: italic;
+}
+
+.left{
+	text-align: left;
 }
 
 .flex-title,
@@ -71,5 +99,18 @@ a:visited,
 a:hover,
 a:active{
 	color: #A20A20;
+	font-weight: bold;
 	text-decoration: none;
+}
+label {
+	display: block;
+	padding-bottom: 20px;
+}
+
+input[type=text]{
+	width: 85%;
+	margin: 2px;
+	height:28px;
+	border: 1px solid grey;
+	border-radius: 10px;
 }

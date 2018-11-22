@@ -3,14 +3,21 @@
 <link rel="stylesheet" type="text/css" href="{% static 'game_solver/style.css' %}">
 
 <h2>Sudoku Game Solver</h2>
-<p>Instructions:</p>
-<p>Enter an unsolved sudoku puzzle as one line with every empty cell represented with a 0. For example <span class="integer-input">530070000600195000098000060800060003400803001700020006060000280000419005000080079</span></p>
+<p class="left">Instructions:</p>
+<p class="left">
+	Enter an unsolved sudoku puzzle as one line with every empty cell represented with a 0. For example
+	<span class="integer-input">
+		530070000600195000098000060800060003400803001700020006060000280000419005000080079
+	</span>
+</p>
 <br/>
-<form method="post">
+<form class= "left" method="post">
 	{% csrf_token %}
 	{{ form }}
-	<input type="submit" value="Submit">
+	<input class="button" type="submit" value="Submit">
 </form>
 <div>
-	<a href="{% url 'game_solver:index' %}">Return to all games</a>
+	<a href="{% url 'game_solver:index' %}">
+		<< Return to all games
+	</a>
 </div>
