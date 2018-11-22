@@ -8,8 +8,7 @@ from .models import Game
 from .solver import SudokuGame
 from .forms import NewSudokuForm
 
-#Question: where should helper function go ?
-def addViewFriendlyArraysToGame(game):
+def add_view_friendly_arrays_to_game(game):
     game.inputArray = [game.input[i:i+9].replace("0", " ") for i in range(0, len(game.input), 9)]
     game.outputArray = [game.output[i:i+9] for i in range(0, len(game.output), 9)]
 
@@ -18,13 +17,13 @@ def index(request):
         creation_date__lte=timezone.now()
     ).order_by('-creation_date')
     for game in latest_games:
-        addViewFriendlyArraysToGame(game)
+        add_view_friendly_arrays_to_game(game)
     context = {'latest_games': latest_games}
     return render(request, 'game_solver/index.html', context)
 
 def detail(request, game_id):
     game = get_object_or_404(Game, pk=game_id)
-    addViewFriendlyArraysToGame(game)
+    add_view_friendly_arrays_to_game(game)
     return render(request, 'game_solver/detail.html', {'game': game})
 
 def new(request):
