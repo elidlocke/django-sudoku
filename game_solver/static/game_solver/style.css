@@ -52,5 +52,24 @@ table, th, td {
 }
 
 td {
-	padding: 5px;
+	height: 20px;
+	width: 15px;
+	text-align: center;
+}
+
+ul.errorlist {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	color: #A20A20;
+	font-style: italic;
+	font-size: 150%;
+	width: 100%;
+}
+a:link,
+a:visited,
+a:hover,
+a:active{
+	color: #A20A20;
+	text-decoration: none;
 }

@@ -22,6 +22,7 @@ class IndexView(generic.ListView):
         return latest_games
 
 class DetailView(generic.DetailView):
+    #TODO: add inputArray & outputArray to view to display boards correctly
     model = Game
     template_name = 'game_solver/detail.html'
 
@@ -33,7 +34,7 @@ def new(request):
             play = SudokuGame(input)
             output = play.solveSudoku()
             game = Game.objects.create(input=input, output=output)
-            #redirect should not be hardcoded to 1
+            #TODO: redirect should not be hardcoded to 1
             return HttpResponseRedirect('/game_solver/31/')
     else:
         form = NewSudokuForm()
