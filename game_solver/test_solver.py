@@ -7,7 +7,7 @@ class TestSolver(unittest.TestCase):
         num_string = "012345678012345678012345678012345678012345678012345678012345678012345678012345678"
         game = SudokuGame(num_string)
         board = game.makeSudokuString2d(num_string)
-        self.assertEqual(board[8], [0,1,2,3,4,5,6,7,8])
+        self.assertEqual(board[8], [0,1,2,3,4,5,6,7,8,])
         #print(game.input_grid)
 
     def testMoveForward(self):
@@ -21,7 +21,7 @@ class TestSolver(unittest.TestCase):
             [7, 0, 0, 0, 2, 0, 0, 0, 6],
             [0, 6, 0, 0, 0, 0, 2, 8, 0],
             [0, 0, 0, 4, 1, 9, 0, 0, 5],
-            [0, 0, 0, 0, 8, 0, 0, 7, 9]
+            [0, 0, 0, 0, 8, 0, 0, 7, 9],
         ]
         position = game.moveForward((0,0))
         self.assertEqual(position, (0,2))
@@ -43,7 +43,7 @@ class TestSolver(unittest.TestCase):
             [7, 0, 0, 0, 2, 0, 0, 0, 6],
             [0, 6, 0, 0, 0, 0, 2, 8, 0],
             [0, 0, 0, 4, 1, 9, 0, 0, 5],
-            [0, 0, 0, 0, 8, 0, 0, 7, 9]
+            [0, 0, 0, 0, 8, 0, 0, 7, 9],
         ]
         position = game.moveBackward((0,0))
         self.assertEqual(position, None)
@@ -68,7 +68,7 @@ class TestSolver(unittest.TestCase):
             [7, 0, 0, 0, 2, 0, 0, 0, 6],
             [0, 6, 0, 0, 0, 0, 2, 8, 0],
             [0, 0, 0, 4, 1, 9, 0, 0, 5],
-            [0, 0, 0, 0, 8, 0, 0, 7, 9]
+            [0, 0, 0, 0, 8, 0, 0, 7, 9],
         ]
         check = game.isValid((1,1), 7)
         self.assertEqual(check, True)

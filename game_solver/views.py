@@ -21,10 +21,11 @@ class IndexView(generic.ListView):
             game.outputArray = [game.output[i:i+9] for i in range(0, len(game.output), 9)]
         return latest_games
 
-class DetailView(generic.DetailView):
-    #TODO: add inputArray & outputArray to view to display boards correctly
-    model = Game
-    template_name = 'game_solver/detail.html'
+def detail(request, game_id):
+    game = get_object_or_404(Game, pk=game_id)
+    game.inputArray = [game.input[i:i+9].replace("0", " ") for i in range(0, len(game.input), 9)]
+    game.outputArray = [game.output[i:i+9] for i in range(0, len(game.output), 9)]
+    return render(request, 'game_solver/detail.html', {'game': game})
 
 def new(request):
     if request.method == 'POST':

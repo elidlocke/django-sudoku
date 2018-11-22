@@ -2,16 +2,45 @@
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{% static 'game_solver/style.css' %}">
 
+<h2>Sudoku Detail View</h2>
 <div class="flex-container">
 	<div>
-		{{ game.input }}
+		<p>Original Puzzle</p>
 	</div>
 	<div>
-		{{ game.output }}
+		<p>Solution</p>
+	</div>
+</div>
+<div class="flex-container">
+	<div>
+		<table class="detail">
+		{% for line in game.inputArray %}
+		<tr>
+		{% for letter in line %}
+		<td>
+		{{letter}}
+		</td>
+		{% endfor %}
+		</tr>
+		{% endfor %}
+		</table>
+	</div>
+	<div>
+		<table class="detail">
+		{% for line in game.outputArray %}
+		<tr>
+		{% for letter in line %}
+		<td>
+		{{letter}}
+		</td>
+		{% endfor %}
+		</tr>
+		{% endfor %}
+		</table>
 	</div>
 </div>
 <div>
 	<a href="{% url 'game_solver:index' %}">
-		<div class="button">Return to all games</div>
+		<div class="button return-btn">Return to all games</div>
 	</a>
 </div>

@@ -4,10 +4,6 @@ body {
 	text-align: center;
 }
 
-.main-cta {
-    padding: 15px 32px;
-	margin:50px;
-}
 
 button, .button {
     padding: 5px 10px;
@@ -21,10 +17,20 @@ button, .button {
     font-size: 16px;
 }
 
+.main-cta,
+div.return-btn {
+    padding: 15px 32px;
+	margin:50px;
+}
+
 h1 {
 	padding-top: 25px;
 	padding-bottom: 0;
 	margin-bottom: 0;
+}
+
+h2 {
+	margin-top: 25px;
 }
 
 textarea,
@@ -83,6 +89,13 @@ td {
 	height: 20px;
 	width: 15px;
 	text-align: center;
+}
+
+
+table.detail td {
+	height: 50px;
+	width: 40px;
+	font-size: 120%;
 }
 
 ul.errorlist {
