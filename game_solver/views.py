@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from django.urls import reverse
 
 from .models import Game
 from .solver import SudokuGame
@@ -34,8 +35,7 @@ def new(request):
             play = SudokuGame(input)
             output = play.solveSudoku()
             game = Game.objects.create(input=input, output=output)
-            #TODO: redirect should not be hardcoded to 1
-            return HttpResponseRedirect('/game_solver/31/')
+            return HttpResponseRedirect(reverse('game_solver:detail', args=(game.id,)))
     else:
         form = NewSudokuForm()
     return render(request, 'game_solver/new.html', {'form': form})
