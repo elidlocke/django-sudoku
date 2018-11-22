@@ -1,27 +1,53 @@
 {% load static %}
 
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{% static 'game_solver/style.css' %}">
 
 <h1>A Super Fabulous Sudoku Solver</h1>
-{% if latest_games %}
-	<div class="main-button">
+<p class="italic">Written by Elizabeth Locke</p>
+<div class="main-button">
+	<a href="{% url 'game_solver:new' %}">
 		<button>
-			<a href="{% url 'game_solver:new' %}">
-				Solve a New Puzzle
-			</a>
+			Solve a New Puzzle
 		</button>
-	</div>
+	</a>
+</div>
+<h2>Recently Solved Puzzles</h2>
+{% if latest_games %}
     <div class="games-list">
-	<h2>Recently Solved Puzzles</h2>
-	<div class="flex-title flex-container">
+	<div class="flex-title">
 		<div>Input Puzzle</div>
 		<div>Solution</div>
 		<div>Detail View</div>
 	</div>
     {% for game in latest_games %}
     <div class="flex-container">
-		<div>{{ game.input }}</div>
-		<div>{{ game.output }}</div>
+		<div>
+			<table>
+			{% for line in game.inputArray %}
+			<tr>
+			{% for letter in line %}
+			<td>
+			{{letter}}
+			</td>
+			{% endfor %}
+			</tr>
+			{% endfor %}
+			</table>
+		</div>
+		<div>
+			<table>
+			{% for line in game.outputArray %}
+			<tr>
+			{% for letter in line %}
+			<td>
+			{{letter}}
+			</td>
+			{% endfor %}
+			</tr>
+			{% endfor %}
+			</table>
+		</div>
 		<div>
 			<a href="{% url 'game_solver:detail' game.id  %}">View Detail</a>
 		</div>

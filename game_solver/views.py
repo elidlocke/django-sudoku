@@ -16,6 +16,9 @@ class IndexView(generic.ListView):
         latest_games = Game.objects.filter(
             creation_date__lte=timezone.now()
         ).order_by('-creation_date')
+        for game in latest_games:
+            game.inputArray = [game.input[i:i+9].replace("0", " ") for i in range(0, len(game.input), 9)]
+            game.outputArray = [game.output[i:i+9] for i in range(0, len(game.output), 9)]
         return latest_games
 
 class DetailView(generic.DetailView):
